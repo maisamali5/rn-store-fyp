@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   bgImage:{
-    // opacity:'50%',
+     opacity:'80%',
     width: '100%',
     height: '100%',
     flex: 1,
