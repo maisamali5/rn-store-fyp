@@ -1,17 +1,17 @@
-import { setBackgroundColorAsync } from 'expo-system-ui'
 import React from 'react'
-import {View, Text, TextInput, Button, StyleSheet, Link} from 'react-native'
-import { useNavigation } from '@react-navigation/native';
+import {View, Text, TextInput, Button, StyleSheet} from 'react-native'
+import { Link, useNavigation } from '@react-navigation/native'
 
-const signup = () => {
+
+const signUp = () => {
     const navigation = useNavigation();
     const handlePress = () => {
-    navigation.navigate('Dashboard');
+      navigation.navigate('Tabs');   
     };
     
   return (
     <View style={styles.container}>
-        <Text style={{fontSize:'30px',fontWeight:'bold'}}>Sign Up Form</Text>
+        <Text style={styles.heading}>Sign Up Form</Text>
       <Text style={styles.label}>Email</Text>
       <TextInput
         style={styles.input}
@@ -38,33 +38,40 @@ const signup = () => {
         secureTextEntry={true}
       />
       
-       <Button title="Sign Up" onPress={handlePress}/> 
+       <Button title="Sign Up" onPress={handlePress} />
        {/* <Link href='/'> */}
         <Text style={styles.ancor}>Login, already have account</Text>
        {/* </Link> */}
+    
     </View>
   )
 }
-export default signup
+export default signUp
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
+      justifyContent: 'center',
+      alignItems: 'center',
       padding: 20,
+    },
+    heading:{
+      fontSize: 30,
+      fontWeight: 'bold',
+      marginTop:0,
+      marginBottom: 50,
     },
     label: {
       fontSize: 16,
       marginBottom: 5 ,
-      color: 'orange',
+      color: '#3498db',
       fontWeight:'bold',
       justifyContent:'left',
       alignItems:'left',
     },
     input: {
       height: 40,
-      width: '100%',
+      width: 350,
       borderColor: 'gray',
       borderWidth: 1,
       marginBottom: 10,
@@ -73,6 +80,7 @@ const styles = StyleSheet.create({
     ancor:{
         fontSize:15,
         textDecorationLine: 'underline',
+        marginTop: 20,
         color:'black',
     }
   });
