@@ -1,10 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {View, Text, Link, StyleSheet} from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import {Button} from 'react-bootstrap';
+import { useEffect, FlatList } from 'react';
 
 
 const Dashboard = () => {
+  const Api_url = 'http://localhost:3000/posts';
+  const [fetchData , setFetchData] = useState([]);
+  const [fetchError,setFetchError] = ("");
+
+  useEffect(() => {
+    const fetchData =async () => {
+        try{
+            const resp = await fetch(Api_url);
+            if(!resp.ok) throw err('Did not receive data');
+            const data = await resp.json();
+            setFetchData(data);
+            console.log(data);
+            setFetchError(null);
+            console.log(data);
+        }catch(err){
+            setFetchError(err.message);
+        }
+    }
+    (async()=> await fetchData());
+  },[])
+
   return (
     <View >
       <LinearGradient
@@ -18,8 +40,9 @@ const Dashboard = () => {
           </Pressable>
         </Link>  */}
     
-    <Button variant="primary">Primary</Button>
-        
+    <Button variant="primary" href='/explore'>Primary</Button>
+      {fetchError ? 
+      <Text>{fetchError}</Text>: <Text>Data received: </Text>}
 
       </LinearGradient>
     </View>

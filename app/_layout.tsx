@@ -34,6 +34,9 @@ export default function RootLayout() {
         <Stack.Screen name="index"  options={{ headerShown: false , title: "Home"}} />
         <Stack.Screen name="signin"  options={{headerShown:true, title:"Sign In" }} />
         <Stack.Screen name="signUp"  options={{ headerShown: true, title:"Sign Up"}}  />
+        <Stack.Screen name="Dashboard"  options={{ headerShown: true, title:"Dashboard"}}  />        
+        <Stack.Screen name="explore"  options={{ headerShown: true, title:"Explore"}}  />        
+
       </Stack>
   );
 }

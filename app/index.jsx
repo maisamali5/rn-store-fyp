@@ -4,33 +4,40 @@ import bookImg from '@/assets/images/background.jpg'
 import { Link } from 'expo-router'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function HomeScreen() {
   return (
-    // <View style={styles.container} >
-    <Container fluid className='w-100 h-100' >
-    <ImageBackground 
+    <View style={styles.container} >
+     {/* <Container fluid className='w-100 h-100' > */}
+    {/* <ImageBackground 
     source={bookImg}
     resizeMode='cover'
     style= {styles.bgImage}
-  >
+  > */}
+  <LinearGradient
+        colors={['#004d7a', '#008793', '#00bf72']}
+        style={styles.background}
+        resizeMode='cover'>
+
     <Text style={styles.text}>Cashier less Libaray App</Text>
     
   
     <Link href={"/signin"} style={styles.button} >
         <Text style={styles.buttonText}>Get Started</Text>
     </Link>  
-  </ImageBackground>
-  </Container>
-// </View>
+  {/* </ImageBackground> */}
+  </LinearGradient>
+  {/* </Container> */}
+   </View>
   );
 }
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    // flexDirection: 'column',
-    // justifyContent: 'center',
-    // alignItems:'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems:'center',
   },
   bgImage:{
     width: "100%" ,
@@ -53,15 +60,20 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 18,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+  },
+  background: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
     text:{
       // flex: 1,
     textAlign:'center',
-    color: "blue",
+    color: "white",
     fontSize: 40,
     fontWeight: 'bold',
   }
-})
+  })
 
 

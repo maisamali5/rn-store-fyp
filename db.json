@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "BMW"
+    },
+    {
+      "id": "2",
+      "title": "Honda"
+    },
+    {
+      "id": "3",
+      "title": "Ford"
+    },
+    {
+      "id": "4",
+      "title": "Volvo"
+    },
+    {
+      "id": "5",
+      "title": "Toyota"
+    },
+    {
+      "id": 6,
+      "title": "kia"
+    },
+    {
+      "id": 7,
+      "title": "FAW"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ]
+}

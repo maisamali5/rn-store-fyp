@@ -1,12 +1,13 @@
 import React from 'react'
 import {View, Text, TextInput, Button, StyleSheet} from 'react-native'
-import { Link, useNavigation } from '@react-navigation/native'
+import { Link , useNavigation} from '@react-navigation/native'
 
 
 const signUp = () => {
     const navigation = useNavigation();
+
     const handlePress = () => {
-      navigation.navigate('Tabs');   
+      navigation.navigate('Dashboard');   
     };
     
   return (
@@ -38,10 +39,10 @@ const signUp = () => {
         secureTextEntry={true}
       />
       
-       <Button title="Sign Up" onPress={handlePress} />
-       {/* <Link href='/'> */}
+       <Button title="Sign Up" onPress={handlePress}/>
+       <Link>
         <Text style={styles.ancor}>Login, already have account</Text>
-       {/* </Link> */}
+       </Link>
     
     </View>
   )
