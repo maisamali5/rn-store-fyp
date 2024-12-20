@@ -7,7 +7,7 @@ const signUp = () => {
     const navigation = useNavigation();
 
     const handlePress = () => {
-      navigation.navigate('Dashboard');   
+      navigation.navigate('explore');   
     };
     
   return (

@@ -6,39 +6,12 @@ import { useEffect, FlatList } from 'react';
 
 
 const Dashboard = () => {
-  const Api_url = 'http://localhost:3000/posts';
-  const [fetchData , setFetchData] = useState([]);
-  const [fetchError,setFetchError] = ("");
-
-  useEffect(() => {
-    const fetchData =async () => {
-        try{
-            const resp = await fetch(Api_url);
-            if(!resp.ok) throw err('Did not receive data');
-            const data = await resp.json();
-            setFetchData(data);
-            console.log(data);
-            setFetchError(null);
-            console.log(data);
-        }catch(err){
-            setFetchError(err.message);
-        }
-    }
-    (async()=> await fetchData());
-  },[])
-
   return (
     <View >
       <LinearGradient
         colors={['#004d7a', '#008793', '#00bf72']}
         style={styles.background}>
         <Text style={styles.text}>Dashboard user</Text>
-
-        {/* <Link href={"/"} asChild>
-          <Pressable >
-          <Button variant="light">Light</Button>
-          </Pressable>
-        </Link>  */}
     
     <Button variant="primary" href='/explore'>Primary</Button>
       {fetchError ? 

@@ -1,9 +1,7 @@
 import React from 'react'
 import { View , Text, ImageBackground , TouchableOpacity, StyleSheet} from 'react-native'
-import bookImg from '@/assets/images/background.jpg'
 import { Link } from 'expo-router'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from 'react-bootstrap';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function HomeScreen() {
