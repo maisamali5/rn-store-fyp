@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet,TextInput, Modal, Button} from 'react-native';
-import {  Container } from 'react-bootstrap';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const explore = ({ navigation }) => {
@@ -13,11 +12,15 @@ const explore = ({ navigation }) => {
 
 
   useEffect(() => {
-     fetch(API_URL)
-      .then(response => response.json())
-      .then(data => setPostData(data))
-      .catch(error => console.error('Error fetching data:', error))
+    fechData()
   }, []);
+
+  const fechData = () =>{
+    fetch(API_URL)
+    .then(response => response.json())
+    .then(data => setPostData(data))
+    .catch(error => console.error('Error fetching data:', error))
+  }
 
   const renderItem = ({ item }) =>(
     <View style={styles.container}>
@@ -51,7 +54,7 @@ const explore = ({ navigation }) => {
       .catch(error => {
         console.error('Error making post request'); 
       });
-      location.reload();
+      fechData()
   }
 
   const handleFormDelete = (id) => {
@@ -65,7 +68,7 @@ const explore = ({ navigation }) => {
       if(!response.ok){
         alert("Data Not Deleted\n Try Again");
       }  else{
-        location.reload();
+        fechData()
       }
     });
   };
@@ -77,7 +80,6 @@ const explore = ({ navigation }) => {
 }
 
   return (
-   
     <ScrollView style={styles.container}>
       <View style = {{justifyContent: 'center', alignItems: 'center',marginTop: 50}}>
         <Text style={{fontSize: 18}}>Enter Car Name:</Text>
@@ -103,10 +105,13 @@ const explore = ({ navigation }) => {
         data={postData}
         renderItem={renderItem}
         keyExtractor={item => item.id.toString()}
+        //for pagination increament page on scroll
+        // onEndReached={[]}
+        // onEndReachedThreshold={[]}
       />
       </View>
       <Modal visible={showModal} transparent={true}>
-          <UserModal setShowModal={setShowModal} items={editUser} />
+          <UserModal setShowModal={setShowModal} items={editUser} fetchData={fechData()} />
       </Modal>
     </ScrollView>
   );
@@ -136,7 +141,7 @@ const UserModal = (props) =>{
         alert("Data Not updated\n Try Again");
       }  else{
         props.setShowModal(false);
-        location.reload();
+        props.fetchData
       }
   }
   )

@@ -1,6 +1,8 @@
 import React from 'react'
 import {View, Text, TextInput, Button, StyleSheet} from 'react-native'
 import { Link , useNavigation} from '@react-navigation/native'
+import 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 
 const signUp = () => {
@@ -11,6 +13,7 @@ const signUp = () => {
     };
     
   return (
+    <GestureHandlerRootView>
     <View style={styles.container}>
         <Text style={styles.heading}>Sign Up Form</Text>
       <Text style={styles.label}>Email</Text>
@@ -40,11 +43,12 @@ const signUp = () => {
       />
       
        <Button title="Sign Up" onPress={handlePress}/>
-       <Link>
+       <Link href='/explore'>
         <Text style={styles.ancor}>Login, already have account</Text>
        </Link>
     
     </View>
+    </GestureHandlerRootView>
   )
 }
 export default signUp
