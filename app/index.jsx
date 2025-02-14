@@ -3,6 +3,10 @@ import { View , Text, ImageBackground , TouchableOpacity, StyleSheet} from 'reac
 import { Link } from 'expo-router'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { LinearGradient } from 'expo-linear-gradient';
+// import './gesture-handler';
+import { enableLegacyWebImplementation } from 'react-native-gesture-handler';
+
+enableLegacyWebImplementation(true);
 
 export default function HomeScreen() {
   return (

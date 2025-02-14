@@ -33,7 +33,7 @@ const signin = () => {
       
        <Button title="Sign In" /> 
 
-       <Link href='/signUp' style={styles.ancor}>
+       <Link href='/signup' style={styles.ancor}>
         <Text style={styles.ancor}>Sign Up, dont have an account</Text>
        </Link>
 

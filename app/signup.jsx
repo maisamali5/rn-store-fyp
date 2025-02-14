@@ -7,7 +7,7 @@ const signUp = () => {
     const navigation = useNavigation();
 
     const handlePress = () => {
-      navigation.navigate('explore');   
+      navigation.navigate('App');   
     };
     
   return (
@@ -40,7 +40,7 @@ const signUp = () => {
       />
       
        <Button title="Sign Up" onPress={handlePress}/>
-       <Link>
+       <Link href='./App'>
         <Text style={styles.ancor}>Login, already have account</Text>
        </Link>
     

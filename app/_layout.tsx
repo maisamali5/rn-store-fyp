@@ -29,13 +29,15 @@ export default function RootLayout() {
 
   return (
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> */}
         <Stack.Screen name="+not-found" />
         <Stack.Screen name="index"  options={{ headerShown: false , title: "Home"}} />
         <Stack.Screen name="signin"  options={{headerShown:true, title:"Sign In" }} />
-        <Stack.Screen name="signUp"  options={{ headerShown: true, title:"Sign Up"}}  />
-        <Stack.Screen name="Dashboard"  options={{ headerShown: true, title:"Dashboard"}}  />        
-        <Stack.Screen name="explore"  options={{ headerShown: true, title:"Explore"}}  />        
+        <Stack.Screen name="signup"  options={{ headerShown: true, title:"Sign Up"}}  />
+        <Stack.Screen name="Dashboard"  options={{ headerShown: false, title:"Dashboard"}}  />        
+        <Stack.Screen name="explore"  options={{ headerShown: true, title:"Explore"}}  />
+        <Stack.Screen name="App"  options={{ headerShown: false, title:"Menu"}}  />        
+        
 
       </Stack>
   );
