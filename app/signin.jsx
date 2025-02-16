@@ -5,21 +5,15 @@ import { Link } from 'expo-router'
 const signin = () => {
   return (
     <View style={styles.container}>
-        {/* <View style={styles.container}>
-        <Image
-        source={img}
-        style={styles.img}
-        resizeMode='contain'
-        ></Image>
-        </View> */}
 
+      <View style={{flex:1, alignItems: "center", margin: 15}}>
       <Text style={styles.heading}>Sign In Form</Text>
       <Text style={styles.label}>Email</Text>
       <TextInput
         style={styles.input}
         // onChangeText={setEmail}
         // value={email}
-        placeholder="Enter your email"
+        placeholder="   Enter your email"
       />
       
       <Text style={styles.label}>Password</Text>
@@ -27,15 +21,35 @@ const signin = () => {
         style={styles.input}
         // onChangeText={setPassword}
         // value={password}
-        placeholder="Enter your password"
+        placeholder="   Enter your password"
         secureTextEntry={true}
       />
       
+      <View style={{margin: 15}}>
        <Button title="Sign In" /> 
+       </View>
 
-       <Link href='/signUp' style={styles.ancor}>
-        <Text style={styles.ancor}>Sign Up, dont have an account</Text>
+       <Link href='/signup' style={styles.ancor}>
+        <Text style={styles.ancor }>Forgot your Password?</Text>
        </Link>
+
+       <View style={styles.container}>
+        <Text style={styles.label}>or Login With</Text>
+
+        <Link href='/signup' style={styles.button}>
+        <Text style={{color: "white",fontSize: 20}}>Login With Facebook</Text>
+       </Link>
+
+       <Link href='/signup'  style={styles.button} >
+        <Text style={{color: "white",fontSize: 20}}>Login With Google</Text>
+       </Link>
+      </View>
+
+       </View>
+       <Link href='/signup' style={styles.ancor}>
+        <Text style={styles.ancor}>Dont have an Account? Sign Up</Text>
+       </Link>
+
 
     </View>
   )
@@ -47,55 +61,49 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // padding: 20,
+    backgroundColor: '#535375',
   },
   heading:{
     fontSize: 30,
     fontWeight: 'bold',
     marginBottom: 50,
     marginTop: 0,
+    color: "white",
   },
   label: {
     fontSize: 16,
-    marginBottom: 5 ,
-    color: '#3498db',
+    margin: 5,
+    color: 'white',
     fontWeight:'bold',
     justifyContent:'left',
     alignItems:'left',
+  },  
+  button: {  
+    width: 350,  
+    margin: 10,
+    marginHorizontal:"auto",
+    backgroundColor: '#3498db',
+    padding: 15,
+    borderRadius: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign:'center',
   },
   input: {
     height: 40,
     width: 350,
-    borderColor: 'gray',
+    borderColor: 'white',
     borderWidth: 1,
-    marginBottom: 10,
+    margin: 10,
     padding: 10,
-    color:'black'
-  },
-  iconBox:{
-    flex:1,
-    justifyContent:'center',
-    alignItems:'center',
-    maxWidthwidth: 100,
-    maxHeight: 'auto'
-  }, 
-   img:{
-    flex:1,
-    flexDirection:'column',
-    justifyContent:'center',
-    alignItems: 'center',
-    maxWidthidth: 130,
-    maxHeight:130,
-    position:'absolute',
-    top:0,
-    right: 0,
-    left:-220,
-    bottom:0,
+    color:'black',
+    borderRadius: 20,
+    backgroundColor: "white",
   },
   ancor:{
-    marginTop:30,  
+    margin:10,  
     fontSize:15,
       textDecorationLine: 'underline',
-      color:'black',
+      color:'white',
   }
 });

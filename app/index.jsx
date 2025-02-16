@@ -2,21 +2,20 @@ import React from 'react'
 import { View , Text, ImageBackground , TouchableOpacity, StyleSheet} from 'react-native'
 import { Link } from 'expo-router'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { LinearGradient } from 'expo-linear-gradient';
+// import { LinearGradient } from 'expo-linear-gradient';
+// import './gesture-handler';
+import { enableLegacyWebImplementation } from 'react-native-gesture-handler';
+
+enableLegacyWebImplementation(true);
 
 export default function HomeScreen() {
   return (
     <View style={styles.container} >
-     {/* <Container fluid className='w-100 h-100' > */}
-    {/* <ImageBackground 
-    source={bookImg}
-    resizeMode='cover'
-    style= {styles.bgImage}
-  > */}
-  <LinearGradient
+
+  {/* <LinearGradient
         colors={['#004d7a', '#008793', '#00bf72']}
         style={styles.background}
-        resizeMode='cover'>
+        resizeMode='cover'> */}
 
     <Text style={styles.text}>Cashier less Libaray App</Text>
     
@@ -25,7 +24,7 @@ export default function HomeScreen() {
         <Text style={styles.buttonText}>Get Started</Text>
     </Link>  
   {/* </ImageBackground> */}
-  </LinearGradient>
+  {/* </LinearGradient> */}
   {/* </Container> */}
    </View>
   );
