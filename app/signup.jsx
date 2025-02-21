@@ -1,10 +1,11 @@
 import React from 'react'
-import {View, Text, TextInput, Button, StyleSheet} from 'react-native'
+import {ScrollView,View , Text, TextInput, Button, StyleSheet} from 'react-native'
 import { useNavigation} from '@react-navigation/native';
 import { Link } from 'expo-router';
 import 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
+// import uploadIcon from "./assets/images/uploadIcon";
 
 const signUp = () => {
     const navigation = useNavigation();
@@ -15,45 +16,88 @@ const signUp = () => {
     
   return (
     <GestureHandlerRootView>
+<ScrollView style={{backgroundColor:'#535375'}}>
     <View style={styles.container}>
 
       <View style={{flex:1, marginTop: 0, marginBottom: 0, alignItems:"center"}}>
 
-        <Text style={styles.heading}>Sign Up Form</Text> 
-      <Text style={styles.label}>Email</Text>
+      <Text style={styles.heading}>Sign Up Form</Text> 
+      
+      
+      <Text style={styles.label}>Enter your First Name</Text>
       <TextInput
         style={styles.input}
         // onChangeText={setEmail}
         // value={email}
-        placeholder="   Enter your email"
+        placeholder="   First Name"
+      />
+
+<Text style={styles.label}>Enter your Last Name</Text>
+      <TextInput
+        style={styles.input}
+        // onChangeText={setEmail}
+        // value={email}
+        placeholder="   Last Name"
+      />
+
+      <Text style={styles.label}>Enter your Email</Text>
+      <TextInput
+        style={styles.input}
+        // onChangeText={setEmail}
+        // value={email}
+        placeholder="   Email"
       />
       
-      <Text style={styles.label}>Password</Text>
+      <Text style={styles.label}>Enter your Password</Text>
       <TextInput
         style={styles.input}
         // onChangeText={setPassword}
         // value={password}
-        placeholder="   Enter your password"
+        placeholder="   Password"
         secureTextEntry={true}
       />
       
-      <Text style={styles.label}>Confirm Password</Text>
+      <Text style={styles.label}>Confirm your Password</Text>
       <TextInput
         style={styles.input}
         // onChangeText={setConfirmPassword}
         // value={confirmPassword}
-        placeholder="   Confirm your password"
+        placeholder="   Confirm Password"
         secureTextEntry={true}
       />
+
+      <Text style={styles.label}>Upload Your face Images</Text>
+      <View style={styles.uploadBox}>
+        <View style={styles.facial}>
+
+            <Icon.Button
+              name="upload"
+              backgroundColor="white"
+              color={"#3498db"}
+              size={30}
+              style={{
+                marginLeft:10,
+              alignItems:"center",
+              width: 220,
+              height: 80}}
+              borderRadius={15}
+              // onPress={}
+            >
+              Click to upload images
+            </Icon.Button> 
+ 
+        </View>
+      </View>
      
-      <View style={{margin:15}}>
-       <Button style={styles.btn} title="Sign Up" onPress={handlePress}/>
+      <View style={styles.btn}>
+       <Button style={{borderRadius: 15,borderWidth: 1,}} title="Sign Up" onPress={handlePress}/>
        </View> 
        <Link href='~/Dashboard'>
         <Text style={styles.ancor}>Login, already have account</Text>
        </Link>
        </View>
     </View>
+    </ScrollView>
     </GestureHandlerRootView>
   )
 }
@@ -84,14 +128,14 @@ const styles = StyleSheet.create({
       margin: 5,
     },
     input: {
-      height: 40,
+      height: 50,
       width: 350,
       borderColor: 'white',
       borderWidth: 1,
       marginBottom: 10,
       padding: 10,
       backgroundColor: "white",
-      borderRadius: 20,
+      borderRadius: 15,
       margin: 8,
     },
     ancor:{      
@@ -101,7 +145,13 @@ const styles = StyleSheet.create({
       color:'white',
     },
     btn:{
-      backgroundColor:'#79c8ef',
-      color: "#79c8ef",
+      margin: 12,
+      width: 130,
+    },
+    facial:{
+      margin: 10,
+    },
+    uploadBox:{
+      backfaceVisibility: "hidden"    
     }
   });

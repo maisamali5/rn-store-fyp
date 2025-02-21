@@ -1,9 +1,10 @@
 import React from 'react'
-import { View , Text, StyleSheet , TextInput, Button} from 'react-native'
+import {ScrollView, View , Text, StyleSheet , TextInput, Button} from 'react-native'
 import { Link } from 'expo-router'
 
 const signin = () => {
   return (
+    <ScrollView style={{backgroundColor:'#535375'}}>
     <View style={styles.container}>
 
       <View style={{flex:1, alignItems: "center", margin: 15}}>
@@ -25,33 +26,33 @@ const signin = () => {
         secureTextEntry={true}
       />
       
-      <View style={{margin: 15}}>
+      <View style={{margin: 15, width: 120}}>
        <Button title="Sign In" /> 
        </View>
 
-       <Link href='/signup' style={styles.ancor}>
-        <Text style={styles.ancor }>Forgot your Password?</Text>
+       <Link href='' style={styles.ancor}>
+        <Text style={styles.ancor }> Forgot your Password? </Text>
        </Link>
 
        <View style={styles.container}>
         <Text style={styles.label}>or Login With</Text>
 
-        <Link href='/signup' style={styles.button}>
+        <Link href={""} style={styles.button}>
         <Text style={{color: "white",fontSize: 20}}>Login With Facebook</Text>
        </Link>
 
-       <Link href='/signup'  style={styles.button} >
+       <Link href={""} style={styles.button} >
         <Text style={{color: "white",fontSize: 20}}>Login With Google</Text>
        </Link>
       </View>
 
        </View>
-       <Link href='/signup' style={styles.ancor}>
+       <Link href={"/signup"} style={styles.ancor}>
         <Text style={styles.ancor}>Dont have an Account? Sign Up</Text>
        </Link>
 
-
     </View>
+  </ScrollView>  
   )
 }
 export default signin
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
   },  
   button: {  
     width: 350,  
-    margin: 10,
+    margin: 15,
     marginHorizontal:"auto",
     backgroundColor: '#3498db',
     padding: 15,
@@ -90,18 +91,18 @@ const styles = StyleSheet.create({
     textAlign:'center',
   },
   input: {
-    height: 40,
+    height: 50,
     width: 350,
     borderColor: 'white',
     borderWidth: 1,
     margin: 10,
     padding: 10,
     color:'black',
-    borderRadius: 20,
+    borderRadius: 15,
     backgroundColor: "white",
   },
   ancor:{
-    margin:10,  
+    margin:15,  
     fontSize:15,
       textDecorationLine: 'underline',
       color:'white',
