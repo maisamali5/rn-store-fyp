@@ -3,7 +3,6 @@ import { Text, View, StyleSheet } from "react-native-web"
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { LinearGradient } from 'expo-linear-gradient';
 
-
 const SettingScreen = () => {
     return (
         <ScrollView style={styles.container}>
@@ -13,7 +12,7 @@ const SettingScreen = () => {
                                   name="user-circle"
                                   backgroundColor="none"
                                   color={"white"}
-                                  size={60}
+                                  size={52}
                                   style={{
                                     top:"5%",
                                     marginLeft:65,
@@ -30,14 +29,14 @@ const SettingScreen = () => {
             <View style={styles.tileBox}>
               <View style={styles.tile}>
               <LinearGradient
-        colors={['#20ACF6', '#A8EB12']}
+        colors={['#eeaeca', '#94bbe9']}
         style={styles.b1}
         >
                                 <Icon.Button
                                   name="history"
                                   backgroundColor="none"
                                   color={"#535375"}
-                                  size={48}
+                                  size={52}
                                   style={{
                                     margin:18,
                                   // alignItems:"center",
@@ -55,14 +54,13 @@ const SettingScreen = () => {
                   <LinearGradient
         colors={['#22c1c3', '#fdbb2d']}
         style={styles.b1}>
-                  {/* <View style={styles.b1}> */}
                   <Icon.Button
                                   name="user-circle"
                                   backgroundColor="none"
                                   color={"#535375"}
-                                  size={48}
+                                  size={54}
                                   style={{
-                                    margin:15,
+                                    margin:12,
                                   // alignItems:"center",
                                   // width: 220,
                                   }}
@@ -75,22 +73,20 @@ const SettingScreen = () => {
             </View>
             <View style={styles.tileBox}>
               <View style={styles.tile}>
-                  <LinearGradient
-        colors={['#D16BA5', '#86A8E7']}
-        style={styles.b1}
-        >
+              <LinearGradient colors={['#D16BA5', '#86A8E7']} style={styles.b1}>
                   <Icon.Button
                                   name="shopping-cart"
                                   backgroundColor="none"
                                   color={"#535375"}
-                                  size={48}
+                                  size={54}
                                   style={{
-                                    margin:15,
+                                    margin:12,
                                   // alignItems:"center",
                                   // width: 220,
                                   }}
                                   // onPress={}
-                                ></Icon.Button></LinearGradient>
+                  ></Icon.Button>
+                  </LinearGradient>
                   <Text style={styles.tileText}>Cart<br />Information</Text>
                   
               </View>
@@ -105,9 +101,9 @@ const SettingScreen = () => {
                                   name="pencil-square"
                                   backgroundColor="none"
                                   color={"#535375"}
-                                  size={48}
+                                  size={55}
                                   style={{
-                                    margin:15,
+                                    margin:17,
                                   // alignItems:"center",
                                   // width: 220,
                                   }}
@@ -127,12 +123,10 @@ export default SettingScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
     backgroundColor: '#535375',
   },
     text: {
-    fontFamily: "Bebas Neue",
+    // fontFamily: "Bebas Neue",
     fontSize: 25,
     fontWeight: "bold",
     margin: 25,
@@ -142,25 +136,21 @@ const styles = StyleSheet.create({
   tileBox:{
     flex: 1,
     backgroundColor: "white",
-    // borderRadius: 8,
     marginBottom: 25,
   },
   tile:{
-    // flex: 5,
     flexDirection: "row",
     height: 100, 
   },
   b1:{
-    // backgroundColor:"khaki",
     width: 100,
   },
   tileText: {
     margin: 8,
     fontSize: 24,
-    fontFamily:  "Bebas Neue",
+    // fontFamily:  "sigmar-sans",
     fontWeight: "bold",
     color: "#535375"
   },
 });
 
-// background: #FCA26F;

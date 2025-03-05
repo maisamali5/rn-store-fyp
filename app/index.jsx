@@ -17,7 +17,7 @@ export default function HomeScreen() {
         style={styles.background}
         resizeMode='cover'> */}
 
-    <Text style={styles.text}>Cashier less Libaray App</Text>
+    <Text style={styles.text}>Cashier less App</Text>
     
   
     <Link href={"/signin"} style={styles.button} >

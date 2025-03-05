@@ -37,11 +37,11 @@ const signin = () => {
        <View style={styles.container}>
         <Text style={styles.label}>or Login With</Text>
 
-        <Link href={""} style={styles.button}>
+        <Link href={""} style={styles.facebook}>
         <Text style={{color: "white",fontSize: 20}}>Login With Facebook</Text>
        </Link>
 
-       <Link href={""} style={styles.button} >
+       <Link href={""} style={styles.google} >
         <Text style={{color: "white",fontSize: 20}}>Login With Google</Text>
        </Link>
       </View>
@@ -72,27 +72,40 @@ const styles = StyleSheet.create({
     color: "white",
   },
   label: {
-    fontSize: 16,
+    fontSize: 20,
     margin: 5,
     color: 'white',
     fontWeight:'bold',
     justifyContent:'left',
     alignItems:'left',
   },  
-  button: {  
+  facebook: {  
     width: 350,  
     margin: 15,
     marginHorizontal:"auto",
-    backgroundColor: '#3498db',
+    backgroundColor: '#2196f3',
     padding: 15,
     borderRadius: 28,
     alignItems: 'center',
     justifyContent: 'center',
     textAlign:'center',
+    fontWeight: "bold"
+  },  
+  google: {  
+    width: 350,  
+    margin: 15,
+    marginHorizontal:"auto",
+    backgroundColor: '#d73131',
+    padding: 15,
+    borderRadius: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign:'center',
+    fontWeight: "bold"
   },
   input: {
     height: 50,
-    width: 350,
+    width: 380,
     borderColor: 'white',
     borderWidth: 1,
     margin: 10,

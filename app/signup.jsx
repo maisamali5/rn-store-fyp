@@ -5,7 +5,6 @@ import { Link } from 'expo-router';
 import 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
-// import uploadIcon from "./assets/images/uploadIcon";
 
 const signUp = () => {
     const navigation = useNavigation();
@@ -90,7 +89,9 @@ const signUp = () => {
       </View>
      
       <View style={styles.btn}>
-       <Button style={{borderRadius: 15,borderWidth: 1,}} title="Sign Up" onPress={handlePress}/>
+        {/* <Link href={"/App"}> */}
+       <Button style={{borderRadius: 15,borderWidth: 1}} title='Sign Up' onPress={handlePress} />
+       {/* </Link> */}
        </View> 
        <Link href='~/Dashboard'>
         <Text style={styles.ancor}>Login, already have account</Text>
