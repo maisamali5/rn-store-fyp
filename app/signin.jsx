@@ -1,6 +1,8 @@
 import React from 'react'
 import {ScrollView, View , Text, StyleSheet , TextInput, Button} from 'react-native'
 import { Link } from 'expo-router'
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 const signin = () => {
   return (
@@ -38,11 +40,23 @@ const signin = () => {
         <Text style={styles.label}>or Login With</Text>
 
         <Link href={""} style={styles.facebook}>
-        <Text style={{color: "white",fontSize: 20}}>Login With Facebook</Text>
+        <Icon.Button
+                    name="facebook"
+                    backgroundColor="transparent"
+                    color={"white"}
+                    size={20}
+        ></Icon.Button>
+        <Text style={{color: "white",fontSize: 15}}>Login With Facebook</Text>
        </Link>
 
        <Link href={""} style={styles.google} >
-        <Text style={{color: "white",fontSize: 20}}>Login With Google</Text>
+        <Icon.Button
+                    name="google"
+                    backgroundColor="transparent"
+                    color={"white"}
+                    size={20}
+        ></Icon.Button>
+     <Text style={{color: "white",fontSize: 15}}>Login With Google</Text>
        </Link>
       </View>
 
@@ -67,12 +81,12 @@ const styles = StyleSheet.create({
   heading:{
     fontSize: 30,
     fontWeight: 'bold',
-    marginBottom: 50,
+    marginBottom: 30,
     marginTop: 0,
     color: "white",
   },
   label: {
-    fontSize: 20,
+    fontSize: 18,
     margin: 5,
     color: 'white',
     fontWeight:'bold',
@@ -84,7 +98,7 @@ const styles = StyleSheet.create({
     margin: 15,
     marginHorizontal:"auto",
     backgroundColor: '#2196f3',
-    padding: 15,
+    padding: 9,
     borderRadius: 28,
     alignItems: 'center',
     justifyContent: 'center',
@@ -96,7 +110,7 @@ const styles = StyleSheet.create({
     margin: 15,
     marginHorizontal:"auto",
     backgroundColor: '#d73131',
-    padding: 15,
+    padding: 9,
     borderRadius: 28,
     alignItems: 'center',
     justifyContent: 'center',
@@ -105,17 +119,17 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 50,
-    width: 380,
+    width: 360,
     borderColor: 'white',
     borderWidth: 1,
-    margin: 10,
+    margin: 13,
     padding: 10,
     color:'black',
     borderRadius: 15,
     backgroundColor: "white",
   },
   ancor:{
-    margin:15,  
+    marginBottom:50,  
     fontSize:15,
       textDecorationLine: 'underline',
       color:'white',

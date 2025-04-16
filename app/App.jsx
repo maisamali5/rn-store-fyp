@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import SettingScreen from  "./screens/SettingScreen";
+import Dashboard from  "./screens/Dashboard";
 import AccountScreen from './screens/AccountScreen';
 import { useWindowDimensions } from 'react-native';
 import PaymentScreen from './screens/PaymentScreen';
@@ -27,7 +27,7 @@ export default function App(){
     },
   }}
 >
-  <Drawer.Screen name="Dashboard" component={SettingScreen} />   
+  <Drawer.Screen name="Dashboard" component={Dashboard} />   
   <Drawer.Screen name="Account Setting" component={AccountScreen} />   
   <Drawer.Screen name="Payment methods" component={PaymentScreen} />   
   <Drawer.Screen name="Support" component={SupportScreen} />   

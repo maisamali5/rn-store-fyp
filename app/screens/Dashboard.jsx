@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from "react-native-web"
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const SettingScreen = () => {
+const Dashboard = () => {
     return (
         <ScrollView style={styles.container}>
           <View style={{backgroundColor: "#535375", height: 100, flexDirection: "row"}}>
@@ -24,8 +24,8 @@ const SettingScreen = () => {
           </View>
           
           <View style={{flex: 1, padding: 20}}>
-          <br />
-          <br />
+          {/* <br />
+          <br /> */}
             <View style={styles.tileBox}>
               <View style={styles.tile}>
               <LinearGradient
@@ -45,7 +45,7 @@ const SettingScreen = () => {
                                   // onPress={}
                                 ></Icon.Button>
                   </LinearGradient>
-                  <Text style={styles.tileText}>Purchase<br />History</Text>
+                  <Text style={styles.tileText}>Purchase History</Text>
                   
               </View>
             </View>
@@ -118,7 +118,7 @@ const SettingScreen = () => {
         </ScrollView>
     )
 } 
-export default SettingScreen;
+export default Dashboard;
 
 const styles = StyleSheet.create({
   container: {
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#535375',
   },
     text: {
-    // fontFamily: "Bebas Neue",
+    // fontFamily: "" ,
     fontSize: 25,
     fontWeight: "bold",
     margin: 25,
