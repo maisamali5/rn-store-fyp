@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      top: "20%"
+      top: "15%"
     },
     label: {
       // flex: 1,

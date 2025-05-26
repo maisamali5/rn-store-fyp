@@ -1,32 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet,TextInput, Modal, Button} from 'react-native';
-import {  Container } from 'react-bootstrap';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const explore = () => {
-  const API_URL =  'http://localhost:3000/posts';
+  const API_URL =  'https://localhost:7018/api/Products';
   const [postData, setPostData] = useState([]);
   const [formData, setFormData] = useState("");
   const [maxId ,setMaxId] = useState(null);
+  const [showModal ,setShowModal] = useState(false);
+  const [editUser ,setEditUser] = useState(false);
 
-  useEffect(() => {
-     fetch(API_URL)
-      .then(response => response.json())
-      .then(data => setPostData(data))
-      .catch(error => console.error('Error fetching data:', error))
-  }, []);
+  
+    useEffect(() => {
+      fetchData();
+   }, []);
+
+   const fetchData = () => {
+    fetch(API_URL)
+     .then(response => response.json())
+     .then(data => setPostData(data))
+     .catch(error => console.error('Error fetching data:', error))
+     console.log(postData)
+    }
 
   const renderItem = ({ item }) => (
-    <View style={{ padding: 10 }}>
-      <Text style={{color: 'black', fontSize:20}}>{item.id} {item.title}</Text>
-      {setMaxId(item.id)}
+    <View style={{ paddingTop: 0, flex: 1 }}>
+      <Text style={{color: 'black', fontSize:20}}>{item.id} {item.name}</Text>
+      <View style={{flexDirection:"row-reverse" , color: "red" }}>
+      <Button
+            title='delete'
+            variant="Danger" 
+            type="submit"
+            onPress={()=>handleFormDelete(item.id)}
+            >
+      </Button>
+      </View>
+      {/* {setMaxId(item.id)} */}
     </View>
   );
 
   const handleFormInsert = () => {
       const setData ={
-        title: formData,
-        id : maxId + 1
+        name: formData,
+        description: "dummy discp",
+        price: 500,
       };
       fetch(API_URL,{
         method:'POST',
@@ -37,26 +54,27 @@ const explore = () => {
       })
       .then(response => response.json())
       .then(data => {console.log('post request successful',data);})
-      .catch(error => {
-        console.error('Error making post request'); 
-      });
-      location.reload();
+      .catch(error => console.error('Error making post request'));
+      console.log(postData);
+      fetchData();
   }
 
   const handleFormDelete = (id) => {
-    fetch(API_URL + id ,{
+    fetch(`${API_URL}/${id}`,{
       method:'DELETE',
-      headers:{
-        'Content-Type': 'application/json',
-      }
+      // headers:{
+      // 'Content-Type': 'application/json',
+      // }
     })
     .then(response => {
       if(!response.ok){
         alert("Data Not Deleted\n Try Again");
       }  else{
-        location.reload();
+        // location.reload();
+        fetchData();
       }
     });
+    console.log(id);
   };
 
   const UpdateData = (data) => {
@@ -78,10 +96,10 @@ const explore = () => {
         value={formData}
         />
       <Button 
+      title='submit'
       variant="success" 
       type="submit"
-      onClick={handleFormInsert}>
-        Submit
+      onPress={handleFormInsert}>
       </Button>
       </View>
       <View>

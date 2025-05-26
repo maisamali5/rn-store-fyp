@@ -1,10 +1,55 @@
-import React from 'react'
+import { useState } from 'react'
 import {ScrollView, View , Text, StyleSheet , TextInput, Button} from 'react-native'
 import { Link } from 'expo-router'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Alert } from 'react-native';
+import { useNavigation} from '@react-navigation/native';
 
 
 const signin = () => {
+    const [email, setEmail]= useState(null);
+    const [password, setPassword ]= useState(null);
+    const [user, setUser] = useState(null);
+
+  const navigation = useNavigation();
+
+
+
+
+ const handleLogIn = async () =>{
+    try {
+      const response = await fetch('https://localhost:7062/api/Auth/token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+           'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          username: email, // Adjust based on your API's expected field
+          password: password,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error('Invalid email or password.');
+      }
+      const data = await response.json();
+      const { token, refreshToken, user } = data;
+      // Store the token (you can use AsyncStorage or any state management)
+      setUser(user); 
+      
+      // const navigateLogin = async (user) => {
+  await AsyncStorage.setItem('user', JSON.stringify(user));
+  navigation.navigate('App');
+// };
+      
+    } catch (error) {
+      console.error('Login error:', error);
+      Alert.alert('Login Failed', error.message);
+    }
+  };
+
+
   return (
     <ScrollView style={{backgroundColor:'#535375'}}>
     <View style={styles.container}>
@@ -14,22 +59,22 @@ const signin = () => {
       <Text style={styles.label}>Email</Text>
       <TextInput
         style={styles.input}
-        // onChangeText={setEmail}
-        // value={email}
+        onChangeText={setEmail}
+        value={email}
         placeholder="   Enter your email"
       />
       
       <Text style={styles.label}>Password</Text>
       <TextInput
         style={styles.input}
-        // onChangeText={setPassword}
-        // value={password}
+        onChangeText={setPassword}
+        value={password}
         placeholder="   Enter your password"
         secureTextEntry={true}
       />
       
       <View style={{margin: 15, width: 120}}>
-       <Button title="Sign In" /> 
+       <Button title="Sign In" onPress={handleLogIn} /> 
        </View>
 
        <Link href='' style={styles.ancor}>
