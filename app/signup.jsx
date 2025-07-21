@@ -77,8 +77,8 @@ const signUp = () => {
       }
       const data = await response.json();
       console.log('Registration successful:', data);
-      navigation.navigate('App');
-      Alert.alert('Registration Successful', 'You can now log in with your credentials.');
+      navigation.navigate('signin'); // Navigate to the login screen after successful registration
+      alert('Registration Successful', 'You can now log in with your credentials.');
     }
     } catch (error) {
       console.error('Registration error:', error);
@@ -86,9 +86,9 @@ const signUp = () => {
     }
   };
 
-    const handleNavigate = () => {
-      navigation.navigate('App');   
-    };
+    // const handleNavigate = () => {
+    //   navigation.navigate('App');   
+    // };
     
   return (
     <GestureHandlerRootView>

@@ -10,7 +10,7 @@ import { useNavigation} from '@react-navigation/native';
 const signin = () => {
     const [email, setEmail]= useState(null);
     const [password, setPassword ]= useState(null);
-    const [user, setUser] = useState(null);
+    // const [user, setUser] = useState(null);
 
   const navigation = useNavigation();
 
@@ -35,17 +35,15 @@ const signin = () => {
       }
       const data = await response.json();
       const { token, refreshToken, user } = data;
-      // Store the token (you can use AsyncStorage or any state management)
-      setUser(user); 
-      
-      // const navigateLogin = async (user) => {
-  await AsyncStorage.setItem('user', JSON.stringify(user));
+      // setUser(user); 
+      localStorage.setItem('userName', JSON.stringify(user.name));
+
   navigation.navigate('App');
 // };
       
     } catch (error) {
       console.error('Login error:', error);
-      Alert.alert('Login Failed', error.message);
+      alert('login Failed', error.message);
     }
   };
 

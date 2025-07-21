@@ -8,22 +8,19 @@ import { navigate } from "expo-router/build/global-state/routing";
 
 const Dashboard = () => {
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState([]);
 
 useEffect(() => {
   // const loadUser = async () => {
-  //   const userData = await AsyncStorage.getItem('userData');
-  //   console.log('userData is', userData);
-  //   if (userData) setUser(JSON.parse(userData));
-  // };
-  // loadUser();
-  // console.log(user);
+    const userName = localStorage.getItem('userName');
+    setUser(userName.split(" "));
+    console.log('users name is:', userName);
 }, []);
 
   return (
         <ScrollView style={styles.container}>
           <View style={{backgroundColor: "#535375", height: 100, flexDirection: "row"}}>
-            <Text style={styles.textUser}>Hi 'Ali Khan'</Text>
+            <Text style={styles.textUser}>Hi { user[0]}"</Text>
             <Icon.Button
                                   name="user-circle"
                                   backgroundColor="none"
@@ -174,12 +171,13 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   textUser: {
-    fontSize: 25,
+    fontSize: 23,
     fontWeight: "bold",
     margin: 25,
     left: "5%",
     color: 'white',
     top: "5%",
+    paddinglef: 0,
   },
   tileBox:{
     flex: 1,
