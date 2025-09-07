@@ -1,5 +1,4 @@
-import { ScrollView } from "react-native-gesture-handler";
-import { Text, View, StyleSheet ,TextInput,Button} from "react-native-web"
+import { Text, View, StyleSheet ,TextInput,Button, ScrollView} from "react-native"
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const PaymentScreen = () => {
@@ -10,7 +9,7 @@ const PaymentScreen = () => {
                 <Text style={styles.heading}>Payment Methods</Text>
               </View>
           </View>
-          <br />
+          
           <View style= {styles.addBtnDiv}>
                     <Icon.Button
                             name="plus"
@@ -24,10 +23,10 @@ const PaymentScreen = () => {
                     ></Icon.Button>    
                 <Text style={{fontWeight: "bold", color: "#535375"}}>Add Payment Method </Text>
               </View>
-              <br/><br/>
+              
               <View style={styles.tileBox}>
                 <Text style={{color: "white", fontSize:20, fontWeight: "bold"}}>Existing Payment methods</Text>
-                <br />
+                
                 <View style={styles.tile}>
                     <Text style={styles.tileText}>Method 1</Text>
                     <Text></Text>

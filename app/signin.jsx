@@ -2,15 +2,12 @@ import { useState } from 'react'
 import {ScrollView, View , Text, StyleSheet , TextInput, Button} from 'react-native'
 import { Link } from 'expo-router'
 import Icon from 'react-native-vector-icons/FontAwesome';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Alert } from 'react-native';
 import { useNavigation} from '@react-navigation/native';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const signin = () => {
     const [email, setEmail]= useState(null);
     const [password, setPassword ]= useState(null);
-    // const [user, setUser] = useState(null);
 
   const navigation = useNavigation();
 
@@ -35,12 +32,9 @@ const signin = () => {
       }
       const data = await response.json();
       const { token, refreshToken, user } = data;
-      // setUser(user); 
-      localStorage.setItem('userName', JSON.stringify(user.name));
-
-  navigation.navigate('App');
-// };
-      
+      localStorage.setItem('userData', JSON.stringify(user));
+      navigation.navigate('App');
+      alert("Login Successful");
     } catch (error) {
       console.error('Login error:', error);
       alert('login Failed', error.message);
@@ -57,7 +51,7 @@ const signin = () => {
       <Text style={styles.label}>Email</Text>
       <TextInput
         style={styles.input}
-        onChangeText={setEmail}
+        onChangeText={ setEmail}
         value={email}
         placeholder="   Enter your email"
       />

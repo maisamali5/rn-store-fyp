@@ -1,5 +1,5 @@
-import { ScrollView } from "react-native-gesture-handler";
-import { Text, View, StyleSheet ,TextInput,Button} from "react-native-web"
+import { ScrollView } from "react-native";
+import { Text, View, StyleSheet ,TextInput,Button} from "react-native"
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const AccountScreen = () => {
@@ -21,8 +21,6 @@ const AccountScreen = () => {
                     // onPress={}
                     ></Icon.Button>
                 <Text style={styles.text}>Hi User Name</Text>
-                <br />
-                <br />
 
                 {/* <Text style={styles.label}>Enter your First Name</Text> */}
                       <TextInput
@@ -65,7 +63,6 @@ const AccountScreen = () => {
                         placeholder="   Confirm Password"
                         secureTextEntry={true}
                       />
-                        <br />
                       <View style={styles.btn}>
                         <Button style={{borderRadius: 15,borderWidth: 1,}} title="Save"/>
                       </View>

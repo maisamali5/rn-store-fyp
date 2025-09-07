@@ -1,13 +1,14 @@
 {
   "expo": {
-    "name": "store",
+    "name": "Cashierless store",
     "slug": "store",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/store.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "jsEngine": "hermes",
     "ios": {
       "supportsTablet": true
     },
@@ -32,12 +33,19 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ],
-      "expo-font"
+        
+      ],[
+              "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
+        }],
+      "expo-font",
+      "expo-web-browser"
+      
     ],
+    
     "experiments": {
       "typedRoutes": true
     }
   }
 }
-
