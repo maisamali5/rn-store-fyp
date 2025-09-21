@@ -2,12 +2,13 @@ import { React, useState, useRef } from 'react'
 import { ScrollView, View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { Link } from 'expo-router';
-// import 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Alert, Image } from 'react-native';
+import { Image } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
+import { Colors } from '../constants/Colors';
+import { Col } from 'react-bootstrap';
 
 
 
@@ -16,19 +17,18 @@ const signUp = () => {
   const [LName, setLName] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const [confirmPassword, setConfirmPassword] = useState(null);
   const [phone, setPhone] = useState(null);
   const navigation = useNavigation();
   const [permission, requestPermission] = useCameraPermissions("granted");
   const [cameraVisible, setCameraVisible] = useState(false);
-  // const [cameraRef, setCameraRef] = useState(null);
   const [FaceImage, setImage] = useState(null);
   const cameraRef = useRef(null);
+  const [confirmPassword, setConfirmPassword] = useState(null);
 
 
   // Take picture handler
   const takePicture = async () => {
-    const photo = await cameraRef.current.takePictureAsync({  });
+    const photo = await cameraRef.current.takePictureAsync({});
     // Convert to base64
     setImage(photo.uri);
     setCameraVisible(false);
@@ -68,28 +68,27 @@ const signUp = () => {
       //   return;
       // }
       // else {
-        const response = await fetch('https://localhost:7062/api/Users', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            Name: name + " " + LName,
-            Mail: email,
-            password: password,
-            PhoneNumber: phone,
-            // confirmPassword: confirmPassword,
-            FaceEmbedding: FaceImage,
-          }),
-        });
-        if (!response.ok) {
-          throw new Error('Invalid email or password.');
-        }
-        const data = await response.json();
-        console.log('Registration successful:', data);
-        navigation.navigate('signin'); // Navigate to the login screen after successful registration
-        alert('Registration Successful', 'You can now log in with your credentials.');
+      const response = await fetch('https://localhost:7062/api/Users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          Name: name + " " + LName,
+          Mail: email,
+          password: password,
+          PhoneNumber: phone,
+          FaceEmbedding: FaceImage,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error('Invalid email or password.');
+      }
+      const data = await response.json();
+      console.log('Registration successful:', data);
+      navigation.navigate('signin'); // Navigate to the login screen after successful registration
+      alert('Registration Successful', 'You can now log in with your credentials.');
       // }
     } catch (error) {
       console.error('Registration error:', error);
@@ -97,13 +96,9 @@ const signUp = () => {
     }
   };
 
-  // const handleNavigate = () => {
-  //   navigation.navigate('App');   
-  // };
-
   return (
     <GestureHandlerRootView>
-      {!cameraVisible && (<ScrollView style={{ backgroundColor: '#535375' }}>
+      {!cameraVisible && (<ScrollView style={{ backgroundColor: Colors.Theme.background }}>
         <View style={styles.container}>
 
           <View style={{ flex: 1, marginTop: 0, marginBottom: 0, alignItems: "center" }}>
@@ -165,33 +160,16 @@ const signUp = () => {
             <Text style={styles.label}>Upload Your face Images</Text>
             <TouchableOpacity style={styles.uploadBox} >
               <View style={styles.facial}>
-                <Icon.Button
-                  // name="upload"
-                  backgroundColor="white"
-                  color={"#3498db"}
-                  // size={30}
-                  style={{
-                    // marginLeft: 10,
-                    alignItems: "center",
-                    width: 250,
-                    height: 80
-                  }}
-                  borderRadius={15}
-                // onPress={takePicture}
-                >
-                  {/* Click to upload images */}
-                  <View style={styles.uploadOptions}>
-                    <TouchableOpacity style={styles.button} onPress={openCamera}>
-                      <Text style={styles.buttonText}>Take Photo</Text>
-                    </TouchableOpacity>
+                {/* Click to upload images */}
+                <View style={styles.uploadOptions}>
+                  <TouchableOpacity style={styles.button} onPress={openCamera}>
+                    <Text style={styles.buttonText}>Take Photo</Text>
+                  </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={pickImage}>
-                      <Text style={styles.buttonText}>Choose from Gallery</Text>
-                    </TouchableOpacity>
-                  </View>
-                </Icon.Button>
-
-
+                  <TouchableOpacity style={styles.button} onPress={pickImage}>
+                    <Text style={styles.buttonText}>Choose from Gallery</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </TouchableOpacity>
             {FaceImage && (
@@ -230,8 +208,6 @@ const signUp = () => {
               <TouchableOpacity style={styles.captureButton} onPress={takePicture}>
                 <Text style={styles.captureButtonText}>Capture</Text>
               </TouchableOpacity>
-
-
             </View>
           </CameraView>
         </View>
@@ -247,32 +223,33 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#535375',
+    backgroundColor: Colors.Theme.background,
   },
   heading: {
     fontSize: 25,
     fontWeight: 'bold',
     marginTop: 0,
     marginBottom: 25,
-    color: "white",
+    color: Colors.Theme.white,
   },
   label: {
-    fontSize: 16,
-    marginBottom: 3,
-    color: 'white',
-    fontWeight: 'bold',
+    fontSize: 12,
+    marginBottom: 2,
+    color: Colors.Theme.white,
+    // fontWeight: 'bold',
     justifyContent: 'left',
     alignItems: 'left',
     margin: 3,
+    letterSpacing: 1,
   },
   input: {
     height: 50,
     width: 350,
-    borderColor: 'white',
+    borderColor: Colors.Theme.white,
     borderWidth: 1,
     marginBottom: 10,
     padding: 10,
-    backgroundColor: "white",
+    backgroundColor: Colors.Theme.white,
     borderRadius: 15,
     margin: 5,
   },
@@ -280,7 +257,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textDecorationLine: 'underline',
     marginTop: 20,
-    color: 'white',
+    color: Colors.Theme.white,
   },
   btn: {
     margin: 10,
@@ -288,28 +265,27 @@ const styles = StyleSheet.create({
   },
   facial: {
     margin: 8,
+    backgroundColor: Colors.Theme.white,
+    borderRadius: 15,
+    padding: 10,
   },
   uploadBox: {
     backfaceVisibility: "hidden"
   },
-
-
-
   uploadOptions: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // marginVertical: 10,
-    // marginHorizontal: 10,
+
   },
   button: {
-    backgroundColor: '#3498db',
+    backgroundColor: Colors.Theme.btnBg,
     padding: 5,
     borderRadius: 5,
     width: '45%',
     alignItems: 'center',
   },
   buttonText: {
-    color: 'white',
+    color: Colors.Theme.white,
     textAlign: 'center',
   },
   cameraContainer: {
@@ -320,7 +296,7 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     zIndex: 100,
-    backgroundColor: 'black',
+    backgroundColor: Colors.Theme.shadow,
   },
   camera: {
     flex: 1,
@@ -332,16 +308,16 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   captureButton: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.Theme.white,
     padding: 15,
     borderRadius: 50,
     marginHorizontal: 20,
   },
   captureButtonText: {
-    color: '#000',
+    color: Colors.Theme.text,
   },
   closeButton: {
-    backgroundColor: 'red',
+    backgroundColor: Colors.Theme.expense,
     padding: 15,
     borderRadius: 100,
     marginHorizontal: 20,
@@ -351,7 +327,7 @@ const styles = StyleSheet.create({
     zIndex: 200,
   },
   closeButtonText: {
-    color: 'white',
+    color: Colors.Theme.white,
   },
   previewImage: {
     width: 150,
